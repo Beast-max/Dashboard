@@ -11,16 +11,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.listedassignment.Adapter.RvAdapter
+import com.example.listedassignment.Api.BaseResponse
 import com.example.listedassignment.R
 import com.example.listedassignment.ViewModel.MainViewModel
 import com.example.listedassignment.databinding.FragmentTopLinkBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TopLinkFragment : Fragment(),RvAdapter.OnCopy {
     private lateinit var adapter:RvAdapter
-    private val viewModel: MainViewModel by activityViewModels()
+    private val viewModel: MainViewModel by viewModels()
     private lateinit var binding:FragmentTopLinkBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,8 +32,13 @@ class TopLinkFragment : Fragment(),RvAdapter.OnCopy {
         binding = FragmentTopLinkBinding.inflate(layoutInflater)
         adapter = RvAdapter(this)
         binding.recyclerView.adapter = adapter
-        viewModel.topLiveData.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
+        viewModel.dashboardLiveData.observe(viewLifecycleOwner, Observer {
+            when (it){
+                is BaseResponse.Success -> {
+                    adapter.submitList(it.data?.data?.topLinks)
+                }
+                else -> {}
+            }
         })
         return binding.root
     }

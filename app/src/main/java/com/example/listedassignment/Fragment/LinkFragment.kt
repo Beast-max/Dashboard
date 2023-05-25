@@ -24,7 +24,6 @@ import com.patrykandpatrick.vico.core.entry.entryModelOf
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
-
 @AndroidEntryPoint
 class LinkFragment : Fragment() {
     private lateinit var viewPagerAdapter:ViewPagerAdapter
@@ -33,7 +32,7 @@ class LinkFragment : Fragment() {
     private var whats_app = ""
     val USER_TOKEN = "user_token"
     private lateinit var binding:FragmentLinkFragmentBinding
-    private val viewModel:MainViewModel by activityViewModels()
+    private val viewModel:MainViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -91,9 +90,6 @@ class LinkFragment : Fragment() {
                     binding.dateRange.text = "${mapData[0].key} - ${mapData[mapData.size-1].key}"
                     val model = entryModelOf(UtilesFunction.floatingList)
                     binding.graphLoader.visibility = View.GONE
-
-                    viewModel.recentLiveData.postValue(it.data?.data?.recentLinks)
-                    viewModel.topLiveData.postValue(it.data?.data?.topLinks)
                     binding.chart.setModel(model)
                 }
                 is BaseResponse.Error ->{

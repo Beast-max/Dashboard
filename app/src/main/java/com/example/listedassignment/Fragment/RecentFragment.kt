@@ -14,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.listedassignment.Adapter.RvAdapter
+import com.example.listedassignment.Api.BaseResponse
 import com.example.listedassignment.R
 import com.example.listedassignment.ViewModel.MainViewModel
 import com.example.listedassignment.databinding.FragmentRecentBinding
@@ -23,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class RecentFragment : Fragment(),RvAdapter.OnCopy {
     private lateinit var adapter:RvAdapter
     private lateinit var binding:FragmentRecentBinding
-    private val viewModel:MainViewModel by activityViewModels()
+    private val viewModel:MainViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,8 +32,13 @@ class RecentFragment : Fragment(),RvAdapter.OnCopy {
         binding = FragmentRecentBinding.inflate(layoutInflater)
         adapter = RvAdapter(this)
         binding.recyclerView.adapter = adapter
-        viewModel.recentLiveData.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
+        viewModel.dashboardLiveData.observe(viewLifecycleOwner, Observer {
+            when (it){
+                is BaseResponse.Success -> {
+                    adapter.submitList(it.data?.data?.recentLinks)
+                }
+                else -> {}
+            }
         })
         return binding.root
     }
