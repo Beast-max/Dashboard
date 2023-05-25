@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">ListedAssignment</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="good_morning">Good night</string>
+    <string name="overview">Overview</string>
+    <string name="_22_aug_23_sept">22 Aug - 23 Sept</string>
+    <string name="prateek_chauhan">Prateek Chauhan</string>
+    <string name="today_s_clicks">Today’s clicks</string>
+    <string name="top_location">Top Location</string>
+    <string name="best_time">Best Time</string>
+    <string name="ahamedabad">Ahamedabad</string>
+    <string name="top_source">Top source</string>
+    <string name="instagram">Instagram</string>
+    <string name="view_analytics">View Analytics</string>
+    <string name="view_all_links">View all Links</string>
+    <string name="talk_with_us">Talk with us</string>
+    <string name="link">link</string>
+    <string name="courses">Courses</string>
+    <string name="campaigns">Campaigns</string>
+    <string name="profile">Profile</string>
+    <string name="_22_aug_2022">22 Aug 2022</string>
+    <string name="sample_link_name">Sample link name...</string>
+    <string name="_2323">2323</string>
+    <string name="https_samplelink_oia_bio_ashd">https://samplelink.oia.bio/ashd...</string>
+    <string name="clicks">Clicks</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
