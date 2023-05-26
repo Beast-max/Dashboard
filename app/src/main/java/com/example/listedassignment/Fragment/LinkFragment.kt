@@ -83,7 +83,7 @@ class LinkFragment : Fragment() {
                 }
                 is BaseResponse.Success ->{
                     binding.click.text = it.data?.todayClicks.toString()
-                    binding.location.text = it.data?.topSource
+                    binding.location.text = it.data?.topLocation
                     binding.source.text = it.data?.topSource
                     it.data?.supportWhatsappNumber?.let { whats_app = it }
                     mapData = UtilesFunction.convertList(it.data?.data?.overallUrlChart)
